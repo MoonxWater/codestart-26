@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Supporting Quote Block */}
-        <div className="max-w-2xl mx-auto p-6 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-sm relative group hover:border-indigo-500/30 transition-all">
+        <div className="max-w-2xl mx-auto p-6 rounded-2xl bg-slate-900/80 border border-slate-800 relative group hover:border-indigo-500/30 transition-all">
           <div className="absolute -top-3 left-6 px-2 bg-[#090d16] text-[11px] font-mono text-indigo-400 tracking-widest uppercase flex items-center gap-1 border border-indigo-500/20 rounded">
             <Code2 className="w-3 h-3" /> Club Philosophy
           </div>

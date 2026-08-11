@@ -7,7 +7,7 @@ import { CLUB_INFO } from '@/config/club';
 
 export const Header: React.FC = () => {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-[#090d16]/80 border-b border-white/10 transition-colors">
+    <header className="sticky top-0 z-50 bg-[#090d16]/95 border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <a 
@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
             href="#variables-section"
             className="text-xs sm:text-sm font-mono text-slate-300 hover:text-indigo-300 transition-colors hidden sm:inline-block"
           >
-            01. Variables & Prompts
+            01. Variables &amp; Prompts
           </a>
           <a
             href="#game-section"

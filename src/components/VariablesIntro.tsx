@@ -28,7 +28,7 @@ export const VariablesIntro: React.FC = () => {
       <div className="text-center space-y-4 max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono">
           <Code2 className="w-4 h-4 text-indigo-400" />
-          Preview Chapter 02: Variables & Prompting
+          Chapter 01: Variables & Prompting
         </div>
 
         <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 tracking-tight font-sans">
@@ -54,7 +54,7 @@ export const VariablesIntro: React.FC = () => {
             <div className="text-xs text-slate-400 space-y-2 pt-2">
               <p className="flex items-center gap-2 text-rose-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                Yields complex, textbook jargon dumps.
+                Yields complex, textbook jargon dumps. Uses terms you may not know.
               </p>
               <p className="flex items-center gap-2 text-rose-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
@@ -63,6 +63,10 @@ export const VariablesIntro: React.FC = () => {
               <p className="flex items-center gap-2 text-rose-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
                 No checks for understanding or interactive practice.
+              </p>
+              <p className="flex items-center gap-2 text-rose-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                Can only be used for simple and shallow topics.
               </p>
             </div>
           </div>
