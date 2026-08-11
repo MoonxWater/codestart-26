@@ -90,30 +90,30 @@ export function GuessingGame() {
       </div>
 
       {/* Dashboard */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-hidden">
 
         {/* Range bar */}
-        <div className="bg-slate-950 p-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm font-mono text-slate-400">Range:</span>
+        <div className="bg-slate-950 p-4 border-b border-slate-800 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-sm font-mono text-slate-400 w-full sm:w-auto mb-1 sm:mb-0">Range:</span>
             {RANGES.map(r => (
               <button key={r} type="button" onClick={() => newGame(r)}
-                className={`px-3 py-1 rounded-md text-xs font-mono font-bold cursor-pointer transition-colors ${max === r ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}`}>
+                className={`px-3 py-1.5 sm:py-1 rounded-md text-xs font-mono font-bold cursor-pointer transition-colors flex-1 sm:flex-none text-center ${max === r ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}`}>
                 1–{r.toLocaleString()}
               </button>
             ))}
-            <div className="flex items-center gap-1 ml-2">
+            <div className="flex items-center gap-1 w-full sm:w-auto mt-2 sm:mt-0 sm:ml-2">
               <input type="number" value={customVal} onChange={e => setCustomVal(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); newGame(parseInt(customVal) || 100); }}}
-                className="w-20 h-7 px-2 rounded bg-slate-800 text-slate-200 text-xs font-mono text-center border border-slate-700 focus:border-indigo-500 outline-none" />
+                className="flex-1 sm:w-24 h-8 sm:h-7 px-2 rounded bg-slate-800 text-slate-200 text-xs font-mono text-center border border-slate-700 focus:border-indigo-500 outline-none" />
               <button type="button" onClick={() => newGame(parseInt(customVal) || 100)}
-                className="h-7 px-3 rounded bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-mono font-bold cursor-pointer transition-colors">
+                className="h-8 sm:h-7 px-4 sm:px-3 rounded bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-mono font-bold cursor-pointer transition-colors">
                 Set
               </button>
             </div>
           </div>
           <button type="button" onClick={() => newGame(max)}
-            className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-bold font-mono cursor-pointer transition-colors">
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-bold font-mono cursor-pointer transition-colors w-full sm:w-auto">
             🔄 Reset
           </button>
         </div>
@@ -141,14 +141,14 @@ export function GuessingGame() {
 
             {!won ? (
               <div className="space-y-3">
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
                   <input ref={inputRef} type="number" value={input}
                     onChange={e => { setInput(e.target.value); setError(''); }}
                     onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); guess(); }}}
                     placeholder={`Guess 1–${max.toLocaleString()}`}
-                    className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono text-lg outline-none focus:border-indigo-500 transition-colors" />
+                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono text-lg outline-none focus:border-indigo-500 transition-colors" />
                   <button type="button" onClick={guess}
-                    className="bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white px-6 rounded-xl font-bold flex items-center gap-2 cursor-pointer transition-colors text-sm">
+                    className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white px-6 py-3 sm:py-0 rounded-xl font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors text-sm whitespace-nowrap">
                     Guess ➤
                   </button>
                 </div>

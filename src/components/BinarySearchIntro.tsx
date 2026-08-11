@@ -48,26 +48,28 @@ export function BinarySearchIntro() {
           </div>
 
           {/* Range controls */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {RANGES.map(r => (
-              <button key={r} type="button"
-                onClick={() => { setRange(r); setCustomInput(r.toString()); }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors border ${
-                  range === r
-                    ? 'bg-indigo-600 text-white border-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.4)]'
-                    : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-indigo-500/40 hover:bg-slate-800'
-                }`}>
-                {r === 1000000 ? '1 Million' : r.toLocaleString()}
-              </button>
-            ))}
-            <div className="flex items-center gap-1.5">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full xl:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {RANGES.map(r => (
+                <button key={r} type="button"
+                  onClick={() => { setRange(r); setCustomInput(r.toString()); }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors border flex-1 sm:flex-none text-center ${
+                    range === r
+                      ? 'bg-indigo-600 text-white border-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.4)]'
+                      : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-indigo-500/40 hover:bg-slate-800'
+                  }`}>
+                  {r === 1000000 ? '1 Million' : r.toLocaleString()}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center justify-center gap-1.5 w-full sm:w-auto mt-1 sm:mt-0">
               <span className="text-xs font-mono text-slate-500">Custom:</span>
               <input type="number" min={2} max={1000000000} value={customInput}
                 onChange={e => setCustomInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); applyCustom(); }}}
-                className="w-24 h-8 px-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-200 font-mono text-xs focus:outline-none focus:border-indigo-500 text-center" />
+                className="w-full sm:w-24 h-8 sm:h-8 px-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-200 font-mono text-xs focus:outline-none focus:border-indigo-500 text-center" />
               <button type="button" onClick={applyCustom}
-                className="h-8 px-2.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 hover:text-white font-mono text-xs font-bold border border-indigo-500/30 cursor-pointer transition-all">
+                className="h-8 px-4 sm:px-2.5 rounded-lg bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 hover:text-white font-mono text-xs font-bold border border-indigo-500/30 cursor-pointer transition-all">
                 Set
               </button>
             </div>
@@ -81,7 +83,7 @@ export function BinarySearchIntro() {
             const pct = Math.max(8, Math.round((count / range) * 100));
             return (
               <React.Fragment key={`${range}-${i}`}>
-                <div className={`w-full p-3 sm:p-4 rounded-xl border flex items-center justify-between font-mono transition-all ${
+                <div className={`w-full p-3 sm:p-4 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono transition-all ${
                   isLast
                     ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.3)]'
                     : 'bg-slate-950 border-slate-800 text-slate-200'
@@ -91,17 +93,17 @@ export function BinarySearchIntro() {
                       #{i + 1}
                     </span>
                     <span className="font-extrabold text-base sm:text-lg">
-                      ~{count.toLocaleString()} possible
+                      ~{count.toLocaleString()} <span className="hidden sm:inline">possible</span>
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-24 sm:w-32 h-2.5 bg-slate-800 rounded-full overflow-hidden hidden sm:block">
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <div className="flex-1 sm:w-32 h-2.5 bg-slate-800 rounded-full overflow-hidden block">
                       <div style={{ width: `${pct}%` }}
                         className={`h-full rounded-full ${isLast ? 'bg-emerald-400' : 'bg-indigo-500'}`} />
                     </div>
                     {isLast
-                      ? <span className="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/40">Target Found! 🎉</span>
-                      : <span className="text-xs text-slate-500">Cut by 50%</span>
+                      ? <span className="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-bold border border-emerald-500/40 whitespace-nowrap">Target Found!</span>
+                      : <span className="text-[10px] sm:text-xs text-slate-500 whitespace-nowrap">Cut by 50%</span>
                     }
                   </div>
                 </div>

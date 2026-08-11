@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database } from 'lucide-react';
+import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database, MessageSquare } from 'lucide-react';
 import { LINKS } from '@/config/links';
 import { CLUB_INFO } from '@/config/club';
 
@@ -46,36 +46,73 @@ export const JoinClub: React.FC = () => {
         ))}
       </div>
 
-      {/* Single CTA Card: Registration Form */}
-      <div className="max-w-lg mx-auto">
+      {/* CTA Cards Container */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 max-w-4xl mx-auto">
+        
+        {/* Card 1: Registration Form */}
         <a
           href={LINKS.clubForm}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative block p-8 rounded-2xl bg-gradient-to-b from-indigo-900/40 to-slate-900 border border-indigo-500/30 hover:border-indigo-500/70 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all text-center space-y-6"
+          className="group relative block p-8 rounded-2xl bg-gradient-to-b from-indigo-900/40 to-slate-900 border border-indigo-500/30 hover:border-indigo-500/70 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all text-center space-y-6 flex flex-col justify-between"
         >
-          <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
-            <UserPlus className="w-8 h-8" />
+          <div className="space-y-6">
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+              <UserPlus className="w-8 h-8" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest block font-semibold">
+                Official Membership
+              </span>
+              <h3 className="text-2xl font-bold text-slate-100 font-sans group-hover:text-indigo-300 transition-colors flex items-center justify-center gap-2">
+                Join {CLUB_INFO.name}
+                <ArrowUpRight className="w-5 h-5 text-indigo-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </h3>
+              <p className="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto">
+                Register as an official member for workshops, hackathons, mentorship, and project teams.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest block font-semibold">
-              Official Membership
-            </span>
-            <h3 className="text-2xl font-bold text-slate-100 font-sans group-hover:text-indigo-300 transition-colors flex items-center justify-center gap-2">
-              Join {CLUB_INFO.name}
-              <ArrowUpRight className="w-5 h-5 text-indigo-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-            </h3>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto">
-              Register as an official member for workshops, hackathons, mentorship, and project teams.
-            </p>
-          </div>
-
-          <span className="block w-full py-3.5 px-4 rounded-xl bg-indigo-600 group-hover:bg-indigo-500 text-white font-mono font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-colors">
+          <span className="block w-full mt-6 py-3.5 px-4 rounded-xl bg-indigo-600 group-hover:bg-indigo-500 text-white font-mono font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-colors">
             Fill Registration Form
             <ArrowUpRight className="w-4 h-4" />
           </span>
         </a>
+
+        {/* Card 2: Discord (Intellects) */}
+        <a
+          href={LINKS.discord}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all text-center space-y-6 flex flex-col justify-between"
+        >
+          <div className="space-y-6">
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+              <MessageSquare className="w-8 h-8" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-purple-400 uppercase tracking-widest block font-semibold">
+                Alumni Network & Resources
+              </span>
+              <h3 className="text-2xl font-bold text-slate-100 font-sans group-hover:text-purple-300 transition-colors flex items-center justify-center gap-2">
+                Join Intellects
+                <ArrowUpRight className="w-5 h-5 text-purple-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </h3>
+              <p className="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto">
+                Get all 8 semester notes, PYQs, and connect with alumni. Created by Aitesaf bhaiya (Batch 2k20).
+              </p>
+            </div>
+          </div>
+
+          <span className="block w-full mt-6 py-3.5 px-4 rounded-xl bg-slate-800 group-hover:bg-slate-700 text-purple-300 font-mono font-bold text-sm flex items-center justify-center gap-2 border border-white/10 transition-colors">
+            Join Discord Server
+            <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </a>
+
       </div>
     </section>
   );
