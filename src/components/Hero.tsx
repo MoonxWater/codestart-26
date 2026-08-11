@@ -24,24 +24,24 @@ export const Hero: React.FC = () => {
 
       <div className="relative max-w-4xl mx-auto text-center flex flex-col items-center z-10 space-y-6 sm:space-y-8">
         {/* Incoming Batch Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-mono tracking-wide shadow-[0_0_15px_rgba(99,102,241,0.15)] animate-fade-in">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-mono tracking-wide shadow-[0_0_15px_rgba(99,102,241,0.15)] animate-fade-up delay-100">
           <Sparkles className="w-4 h-4 text-indigo-400 animate-pulse" />
           <span>{CLUB_INFO.name} — Batch of {CLUB_INFO.batch}</span>
         </div>
 
         {/* Main Headline */}
         <div className="space-y-2 sm:space-y-4">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-100 font-sans">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-100 font-sans animate-fade-up delay-200">
             Welcome, <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-400 to-indigo-300">{CLUB_INFO.batch}.</span>
           </h1>
 
-          <p className="text-xl sm:text-3xl font-semibold text-slate-300 tracking-tight font-mono">
+          <p className="text-xl sm:text-3xl font-semibold text-slate-300 tracking-tight font-mono animate-fade-up delay-300">
             {CLUB_INFO.tagline}
           </p>
         </div>
 
         {/* Supporting Quote Block */}
-        <div className="max-w-2xl mx-auto p-6 rounded-2xl bg-slate-900/80 border border-slate-800 relative group hover:border-indigo-500/30 transition-all">
+        <div className="max-w-2xl mx-auto p-6 rounded-2xl bg-slate-900/80 border border-slate-800 relative group hover:border-indigo-500/30 transition-all animate-fade-up delay-400">
           <div className="absolute -top-3 left-6 px-2 bg-[#090d16] text-[11px] font-mono text-indigo-400 tracking-widest uppercase flex items-center gap-1 border border-indigo-500/20 rounded">
             <Code2 className="w-3 h-3" /> Club Philosophy
           </div>
@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Action Button */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+        <div className="pt-4 flex flex-col sm:flex-row items-center gap-4 animate-fade-up delay-500">
           <a
             href="#variables-section"
             onClick={handleScrollToNext}

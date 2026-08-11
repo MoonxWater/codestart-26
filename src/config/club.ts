@@ -1,5 +1,5 @@
 export const CLUB_INFO = {
-  name: "Geeky MACET",
+  name: "GeekyMACET",
   tagline: "Your first steps into programming.",
   batch: "2026",
   

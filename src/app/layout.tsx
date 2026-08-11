@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Interactive Game",
     "Algorithm Intuition",
   ],
-  authors: [{ name: "Geeky MACET" }],
+  authors: [{ name: "Seraj Muneer Faridy" }],
 };
 
 export const viewport: Viewport = {
