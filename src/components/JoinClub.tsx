@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database, MessageSquare } from 'lucide-react';
+import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database, MessageSquare, Download } from 'lucide-react';
 import { LINKS } from '@/config/links';
 import { CLUB_INFO } from '@/config/club';
 
@@ -47,9 +47,41 @@ export const JoinClub: React.FC = () => {
       </div>
 
       {/* CTA Cards Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 max-w-6xl mx-auto">
         
-        {/* Card 1: Registration Form */}
+        {/* Card 1: Discord Download */}
+        <a
+          href={LINKS.discordApp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-blue-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all text-center space-y-6 flex flex-col justify-between"
+        >
+          <div className="space-y-6">
+            <div className="mx-auto w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+              <Download className="w-8 h-8" />
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block font-semibold">
+                Get The App
+              </span>
+              <h3 className="text-2xl font-bold text-slate-100 font-sans group-hover:text-blue-300 transition-colors flex items-center justify-center gap-2">
+                Download Discord
+                <ArrowUpRight className="w-5 h-5 text-blue-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </h3>
+              <p className="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto">
+                Get Discord on your phone or PC to join the community and never miss an update.
+              </p>
+            </div>
+          </div>
+
+          <span className="block w-full mt-6 py-3.5 px-4 rounded-xl bg-slate-800 group-hover:bg-slate-700 text-blue-300 font-mono font-bold text-sm flex items-center justify-center gap-2 border border-white/10 transition-colors">
+            Download App
+            <ArrowUpRight className="w-4 h-4" />
+          </span>
+        </a>
+
+        {/* Card 2: Registration Form */}
         <a
           href={LINKS.clubForm}
           target="_blank"
@@ -81,7 +113,7 @@ export const JoinClub: React.FC = () => {
           </span>
         </a>
 
-        {/* Card 2: Discord (Intellects) */}
+        {/* Card 3: Discord (Intellects) */}
         <a
           href={LINKS.discord}
           target="_blank"

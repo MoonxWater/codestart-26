@@ -6,7 +6,7 @@ export const CLUB_INFO = {
   // Developer & Club Admin
   developer: {
     name: "Seraj Muneer Faridy",
-    role: "Club Admin & Lead Developer",
+    role: "Club Admin",
     github: "https://github.com/MoonxWater",
   },
 

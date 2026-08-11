@@ -183,15 +183,17 @@ export function GuessingGame() {
 
           {/* Right column */}
           <div className="space-y-4 flex flex-col">
-            <div>
+            <div className="pb-4">
               <div className="text-sm font-mono text-slate-400 mb-2">Search Window</div>
-              <div className="h-8 bg-slate-950 rounded-lg border border-slate-800 flex overflow-hidden p-0.5">
-                {lo > 1 && <div style={{ width: `${((lo - 1) / max) * 100}%` }} className="bg-slate-800/60 h-full rounded-l" />}
-                <div style={{ width: `${Math.max(2, ((hi - lo + 1) / max) * 100)}%` }}
-                  className="bg-indigo-600 h-full rounded shadow-[0_0_10px_rgba(79,70,229,0.5)] flex items-center justify-center text-[10px] font-mono font-bold text-white overflow-hidden whitespace-nowrap px-1">
-                  {lo}–{hi}
+              <div className="h-6 bg-slate-950 rounded-lg border border-slate-800 flex p-0.5 relative">
+                {lo > 1 && <div style={{ width: `${((lo - 1) / max) * 100}%` }} className="bg-slate-800/60 h-full rounded-l transition-all duration-300" />}
+                <div style={{ width: `${((hi - lo + 1) / max) * 100}%`, minWidth: '4px' }}
+                  className="bg-indigo-600 h-full rounded shadow-[0_0_10px_rgba(79,70,229,0.5)] relative flex justify-center transition-all duration-300">
+                  <span className="absolute top-full mt-1.5 z-10 text-[11px] font-mono font-bold text-indigo-300 whitespace-nowrap pointer-events-none">
+                    {lo}–{hi}
+                  </span>
                 </div>
-                {hi < max && <div style={{ width: `${((max - hi) / max) * 100}%` }} className="bg-slate-800/60 h-full rounded-r" />}
+                {hi < max && <div style={{ width: `${((max - hi) / max) * 100}%` }} className="bg-slate-800/60 h-full rounded-r transition-all duration-300" />}
               </div>
             </div>
 
