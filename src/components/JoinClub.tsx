@@ -1,13 +1,29 @@
 'use client';
 
-import React from 'react';
-import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database, MessageSquare, Download } from 'lucide-react';
+import { Sparkles, ArrowUpRight, UserPlus, Code, Shield, Cloud, Terminal, Gamepad, Database, MessageSquare, Download, Lock, X } from 'lucide-react';
+import { useState } from 'react';
 import { LINKS } from '@/config/links';
 import { CLUB_INFO } from '@/config/club';
 
 export const JoinClub: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [secretCode, setSecretCode] = useState('');
+  const [error, setError] = useState('');
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (secretCode.trim().toUpperCase() === 'CODESTART26') {
+      window.open(LINKS.discord, '_blank');
+      setIsModalOpen(false);
+      setSecretCode('');
+      setError('');
+    } else {
+      setError('Invalid Access Code');
+    }
+  };
+
   return (
-    <section id="join-section" className="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto space-y-12 scroll-mt-20">
+    <section id="join-section" className="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto space-y-12 scroll-mt-20 relative">
       {/* Section Header */}
       <div className="text-center space-y-4 max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono">
@@ -113,12 +129,10 @@ export const JoinClub: React.FC = () => {
           </span>
         </a>
 
-        {/* Card 3: Discord (Intellects) */}
-        <a
-          href={LINKS.discord}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all text-center space-y-6 flex flex-col justify-between"
+        {/* Card 3: Discord (Intellects) - Hidden behind secret code */}
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="group relative block p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all text-left space-y-6 flex flex-col justify-between w-full cursor-pointer"
         >
           <div className="space-y-6">
             <div className="mx-auto w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
@@ -140,12 +154,56 @@ export const JoinClub: React.FC = () => {
           </div>
 
           <span className="block w-full mt-6 py-3.5 px-4 rounded-xl bg-slate-800 group-hover:bg-slate-700 text-purple-300 font-mono font-bold text-sm flex items-center justify-center gap-2 border border-white/10 transition-colors">
-            Join Discord Server
-            <ArrowUpRight className="w-4 h-4" />
+            <Lock className="w-4 h-4" />
+            Unlock Access
           </span>
-        </a>
+        </button>
 
       </div>
+
+      {/* Secret Code Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-md bg-slate-900 border border-purple-500/30 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6 animate-fade-up">
+            <button
+              onClick={() => { setIsModalOpen(false); setError(''); setSecretCode(''); }}
+              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            
+            <div className="space-y-2 text-center">
+              <div className="mx-auto w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 border border-purple-500/40">
+                <Lock className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-white">Restricted Access</h3>
+              <p className="text-sm text-slate-400">
+                Enter the secret passcode provided during the seminar to unlock the Intellects Alumni Network.
+              </p>
+            </div>
+
+            <form onSubmit={handleUnlock} className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  value={secretCode}
+                  onChange={(e) => { setSecretCode(e.target.value); setError(''); }}
+                  placeholder="Enter Passcode..."
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-purple-500 rounded-xl px-4 py-3 text-white font-mono text-center outline-none transition-colors uppercase tracking-widest"
+                  autoFocus
+                />
+                {error && <p className="text-rose-400 text-xs font-bold text-center mt-2 font-mono">{error}</p>}
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition-colors shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+              >
+                Unlock
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
