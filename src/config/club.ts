@@ -14,13 +14,13 @@ export const CLUB_INFO = {
   founder: {
     name: "Md Al Fahad Ahmad",
     role: "Founder",
-    github: "https://github.com/Koyu2391",
+    linkedin: "https://www.linkedin.com/in/md-al-fahad-ahmad?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
 
   // Co-Founder
   coFounder: {
-    name: "Sameer",
+    name: "Md Sameer Abbas",
     role: "Co-Founder",
-    github: "https://github.com/placeholder-sameer",
+    linkedin: "https://www.linkedin.com/in/msa7?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
 };
