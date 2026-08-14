@@ -1,6 +1,6 @@
 export const CLUB_INFO = {
   name: "GeekyMACET",
-  tagline: "Your first steps into programming.",
+  tagline: "Code. Create. Collaborate.",
   batch: "2026",
   
   // Developer & Club Admin
