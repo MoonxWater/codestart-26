@@ -47,15 +47,15 @@ export const GuessInput: React.FC<GuessInputProps> = ({
   };
 
   return (
-    <div className="w-full bg-[#050505] border border-white/10 p-4 sm:p-8 space-y-6">
+    <div className="w-full bg-slate-900/90 border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl backdrop-blur-md space-y-6">
       <div className="text-center space-y-2">
-        <div className="inline-block px-3 py-1 bg-black text-white text-[10px] font-mono border border-white/20 uppercase tracking-widest">
-          Step 2: Start Guessing
-        </div>
-        <h4 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-tighter">
-          I'm thinking of a number between
+        <p className="text-xs uppercase tracking-widest font-mono text-indigo-400">
+          Guessing Interface
+        </p>
+        <h4 className="text-xl sm:text-2xl font-bold text-slate-100 font-sans">
+          I&apos;m thinking of a number between
         </h4>
-        <div className="inline-block px-4 py-1.5 bg-white/10 text-white font-mono font-bold text-lg sm:text-xl uppercase tracking-widest border border-white/20">
+        <div className="inline-block px-4 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 font-mono font-extrabold text-lg sm:text-xl">
           1 and {upperBound.toLocaleString()}
         </div>
       </div>
@@ -63,7 +63,7 @@ export const GuessInput: React.FC<GuessInputProps> = ({
       {/* Input Form */}
       {!isWon && (
         <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <div className="flex items-center gap-3">
             <div className="relative flex-1">
               <input
                 type="number"
@@ -76,7 +76,7 @@ export const GuessInput: React.FC<GuessInputProps> = ({
                   if (errorMsg) setErrorMsg(null);
                 }}
                 placeholder={`Search bounds: ${currentPossibleMin} - ${currentPossibleMax}`}
-                className="w-full h-12 sm:h-14 px-5 rounded-sm bg-black border border-white/20 text-white placeholder-slate-500 font-mono text-sm sm:text-lg focus:outline-none focus:border-white disabled:opacity-50 transition-all"
+                className="w-full h-14 px-5 rounded-xl bg-slate-950 border border-white/15 text-slate-100 placeholder-slate-500 font-mono text-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-50 transition-all shadow-inner"
                 aria-label="Your numeric guess"
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-500 pointer-events-none hidden sm:inline">
@@ -87,7 +87,7 @@ export const GuessInput: React.FC<GuessInputProps> = ({
             <button
               type="submit"
               disabled={disabled || !guessValue.trim()}
-              className="h-12 sm:h-14 px-6 rounded-sm bg-white hover:bg-slate-200 text-black font-mono font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 shrink-0"
+              className="h-14 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono font-bold text-base flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(99,102,241,0.3)] disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 border border-indigo-400/30 shrink-0"
             >
               <span>Guess</span>
               <Send className="w-4 h-4" />
@@ -95,7 +95,7 @@ export const GuessInput: React.FC<GuessInputProps> = ({
           </div>
 
           {errorMsg && (
-            <div className="flex items-center gap-2 text-white text-xs font-mono bg-black border border-white p-2.5 rounded-sm animate-shake">
+            <div className="flex items-center gap-2 text-rose-400 text-xs font-mono bg-rose-500/10 border border-rose-500/30 p-2.5 rounded-lg animate-shake">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMsg}</span>
             </div>
@@ -107,34 +107,34 @@ export const GuessInput: React.FC<GuessInputProps> = ({
       {lastGuess && (
         <div
           key={lastGuess.id}
-          className={`w-full max-w-md mx-auto p-4 rounded-sm border flex items-center justify-center gap-3 font-mono font-bold text-sm sm:text-base uppercase tracking-widest transition-all animate-bounce-subtle ${
+          className={`w-full max-w-md mx-auto p-4 rounded-xl border flex items-center justify-center gap-3 font-mono font-bold text-base sm:text-lg transition-all animate-bounce-subtle ${
             lastGuess.result === 'correct'
-              ? 'bg-black border-white text-white'
+              ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300 shadow-[0_0_25px_rgba(16,185,129,0.3)]'
               : lastGuess.result === 'too_low'
-              ? 'bg-black border-slate-400 text-slate-400'
-              : 'bg-black border-slate-600 text-slate-600'
+              ? 'bg-amber-500/15 border-amber-500/40 text-amber-300 shadow-[0_0_20px_rgba(251,191,36,0.2)]'
+              : 'bg-rose-500/15 border-rose-500/40 text-rose-300 shadow-[0_0_20px_rgba(244,63,94,0.2)]'
           }`}
           role="status"
           aria-live="polite"
         >
           {lastGuess.result === 'correct' && (
             <>
-              <CheckCircle2 className="w-5 h-5 text-white shrink-0 animate-spin-once" />
-              <span>You found it!</span>
+              <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 animate-spin-once" />
+              <span>You found it! 🎉</span>
             </>
           )}
 
           {lastGuess.result === 'too_low' && (
             <>
-              <ArrowUp className="w-5 h-5 shrink-0" />
-              <span>Too low.</span>
+              <ArrowUp className="w-6 h-6 text-amber-400 shrink-0" />
+              <span>Too low. Try again.</span>
             </>
           )}
 
           {lastGuess.result === 'too_high' && (
             <>
-              <ArrowDown className="w-5 h-5 shrink-0" />
-              <span>Too high.</span>
+              <ArrowDown className="w-6 h-6 text-rose-400 shrink-0" />
+              <span>Too high. Try again.</span>
             </>
           )}
         </div>

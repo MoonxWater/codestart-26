@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeStart '26
 
-## Getting Started
+> **Your first steps into programming.**
 
-First, run the development server:
+CodeStart '26 is an interactive programming introduction created for the **2026 incoming batch of Geeky MACET**, the programming club of Maulana Azad College of Engineering and Technology.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The goal is simple:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Make students curious about programming before asking them to learn it.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Instead of starting with pages of theory, CodeStart introduces programming through interactive experiences and gradually connects them to real programming concepts.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## What is CodeStart?
 
-To learn more about Next.js, take a look at the following resources:
+CodeStart is designed for students who may have little or no programming experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The experience currently introduces students to the intuition behind **Binary Search** through a simple number-guessing game.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Students:
 
-## Deploy on Vercel
+1. Choose an upper range.
+2. Try to find a randomly generated number.
+3. Receive feedback after every guess.
+4. See their number of attempts increase in real time.
+5. Observe how the possible range can be narrowed down.
+6. Discover the intuition behind Binary Search.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The objective isn't just to teach an algorithm.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+It's to demonstrate **how programmers approach problems**.
+
+---
+
+## The Experience
+
+The intended progression is:
+
+```text
+Curiosity
+    ↓
+Experimentation
+    ↓
+Understanding
+    ↓
+Algorithms
+    ↓
+Programming
+    ↓
+Community

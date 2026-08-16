@@ -8,7 +8,7 @@ export const CLUB_INFO = {
     name: "Seraj Muneer Faridy",
     role: "Club Admin",
     github: "https://github.com/MoonxWater",
-    linkedin: "https://linkedin.com/in/seraj-muneer-faridy"
+    linkedin: "https://www.linkedin.com/in/seraj-muneer-faridy/"
   },
 
   // Founder

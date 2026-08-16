@@ -17,15 +17,15 @@ export const GuessHistory: React.FC<GuessHistoryProps> = ({ guesses }) => {
   const reversed = [...guesses].reverse();
 
   return (
-    <div className="w-full bg-[#050505] border border-white/10 p-4 sm:p-6 space-y-4">
-      <div className="flex items-center justify-between border-b border-white/10 pb-3">
+    <div className="w-full bg-slate-900/90 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md space-y-4">
+      <div className="flex items-center justify-between border-b border-white/5 pb-3">
         <div className="flex items-center gap-2">
-          <History className="w-4 h-4 text-white" />
-          <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-tighter">
+          <History className="w-4 h-4 text-indigo-400" />
+          <h4 className="text-base font-bold text-slate-100 font-sans">
             Your Guesses ({guesses.length})
           </h4>
         </div>
-        <span className="text-[10px] sm:text-xs font-mono text-slate-500 uppercase tracking-widest">
+        <span className="text-xs font-mono text-slate-500">
           Newest first
         </span>
       </div>
@@ -36,36 +36,36 @@ export const GuessHistory: React.FC<GuessHistoryProps> = ({ guesses }) => {
           return (
             <div
               key={g.id}
-              className="flex items-center justify-between p-3 bg-black border border-white/10 font-mono text-[10px] sm:text-sm hover:border-white/20 transition-all rounded-sm"
+              className="flex items-center justify-between p-3 rounded-xl bg-slate-950/70 border border-white/5 font-mono text-sm hover:border-white/15 transition-all"
             >
-              <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-slate-500 w-6 sm:w-8">
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-slate-500 w-8">
                   #{attemptNum}
                 </span>
-                <span className="font-bold text-white min-w-10 sm:min-w-16 text-xs sm:text-base">
+                <span className="text-base font-bold text-slate-100 min-w-16">
                   {g.value.toLocaleString()}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-slate-500 hidden sm:inline mr-2 uppercase tracking-widest">
+                <span className="text-xs text-slate-500 hidden sm:inline">
                   Range: [{g.rangeAfter[0]} – {g.rangeAfter[1]}]
                 </span>
 
                 {g.result === 'correct' && (
-                  <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-white text-black font-bold uppercase tracking-widest border border-white text-[10px] sm:text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" /> Correct!
                   </span>
                 )}
 
                 {g.result === 'too_low' && (
-                  <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-black text-slate-400 font-bold uppercase tracking-widest border border-slate-500 text-[10px] sm:text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-semibold">
                     <ArrowUp className="w-3.5 h-3.5" /> Too low
                   </span>
                 )}
 
                 {g.result === 'too_high' && (
-                  <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-black text-slate-400 font-bold uppercase tracking-widest border border-slate-500 text-[10px] sm:text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-semibold">
                     <ArrowDown className="w-3.5 h-3.5" /> Too high
                   </span>
                 )}
