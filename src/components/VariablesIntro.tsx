@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, Copy, Check, Code2, Bot, Zap, MessageSquareText } from 'lucide-react';
+import { Sparkles, Copy, Check, Code2, Bot } from 'lucide-react';
 
 const MASTER_PROMPT = `Teach me variables in programming from the absolute basics.
 
@@ -110,7 +110,21 @@ export const VariablesIntro: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
             <span className="flex items-center gap-2">
               <Bot className="w-4 h-4 text-indigo-400" />
-              Copy & paste this into ChatGPT, Gemini, or Claude to start learning Variables!
+              <span>
+                Copy & paste this into{' '}
+                <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2">
+                  ChatGPT
+                </a>
+                ,{' '}
+                <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2">
+                  Gemini
+                </a>
+                , or{' '}
+                <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 underline underline-offset-2">
+                  Claude
+                </a>{' '}
+                to start learning Variables!
+              </span>
             </span>
           </div>
         </div>

@@ -6,15 +6,20 @@ import { LINKS } from '@/config/links';
 import { CLUB_INFO } from '@/config/club';
 
 export const JoinClub: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTarget, setModalTarget] = useState<'discord' | 'form' | null>(null);
   const [secretCode, setSecretCode] = useState('');
   const [error, setError] = useState('');
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
-    if (secretCode.trim().toUpperCase() === 'CODESTART26') {
-      window.open(LINKS.discord, '_blank');
-      setIsModalOpen(false);
+    const code = secretCode.trim().toUpperCase();
+    const isValid = modalTarget === 'discord' 
+      ? code === 'INTELLECTS20' 
+      : code === 'CODESTART26';
+
+    if (isValid) {
+      window.open(modalTarget === 'discord' ? LINKS.discord : LINKS.clubForm, '_blank');
+      setModalTarget(null);
       setSecretCode('');
       setError('');
     } else {
@@ -98,18 +103,16 @@ export const JoinClub: React.FC = () => {
         </a>
 
         {/* Card 2: Registration Form */}
-        <a
-          href={LINKS.clubForm}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block p-8 rounded-2xl bg-gradient-to-b from-indigo-900/40 to-slate-900 border border-indigo-500/30 hover:border-indigo-500/70 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all text-center space-y-6 flex flex-col justify-between"
+        <button
+          onClick={() => setModalTarget('form')}
+          className="group relative block p-8 rounded-2xl bg-gradient-to-b from-indigo-900/40 to-slate-900 border border-indigo-500/30 hover:border-indigo-500/70 shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all text-left space-y-6 flex flex-col justify-between cursor-pointer w-full"
         >
-          <div className="space-y-6">
+          <div className="space-y-6 w-full text-center">
             <div className="mx-auto w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
               <UserPlus className="w-8 h-8" />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 text-center">
               <span className="text-xs font-mono text-indigo-400 uppercase tracking-widest block font-semibold">
                 Official Membership
               </span>
@@ -124,14 +127,14 @@ export const JoinClub: React.FC = () => {
           </div>
 
           <span className="block w-full mt-6 py-3.5 px-4 rounded-xl bg-indigo-600 group-hover:bg-indigo-500 text-white font-mono font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-colors">
+            <Lock className="w-4 h-4" />
             Fill Registration Form
-            <ArrowUpRight className="w-4 h-4" />
           </span>
-        </a>
+        </button>
 
         {/* Card 3: Discord (Intellects) - Hidden behind secret code */}
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setModalTarget('discord')}
           className="group relative block p-8 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] transition-all text-left space-y-6 flex flex-col justify-between w-full cursor-pointer"
         >
           <div className="space-y-6">
@@ -162,23 +165,23 @@ export const JoinClub: React.FC = () => {
       </div>
 
       {/* Secret Code Modal */}
-      {isModalOpen && (
+      {modalTarget !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="relative w-full max-w-md bg-slate-900 border border-purple-500/30 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6 animate-fade-up">
+          <div className={`relative w-full max-w-md bg-slate-900 border ${modalTarget === 'discord' ? 'border-purple-500/30' : 'border-indigo-500/30'} rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6 animate-fade-up`}>
             <button
-              onClick={() => { setIsModalOpen(false); setError(''); setSecretCode(''); }}
+              onClick={() => { setModalTarget(null); setError(''); setSecretCode(''); }}
               className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
             
             <div className="space-y-2 text-center">
-              <div className="mx-auto w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 border border-purple-500/40">
+              <div className={`mx-auto w-12 h-12 rounded-full ${modalTarget === 'discord' ? 'bg-purple-500/20 text-purple-400 border-purple-500/40' : 'bg-indigo-500/20 text-indigo-400 border-indigo-500/40'} flex items-center justify-center mb-4 border`}>
                 <Lock className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-white">Restricted Access</h3>
               <p className="text-sm text-slate-400">
-                Enter the secret passcode provided during the seminar to unlock the Intellects Alumni Network.
+                Enter the secret passcode provided during the seminar to unlock {modalTarget === 'discord' ? 'the Intellects Alumni Network' : 'the Registration Form'}.
               </p>
             </div>
 
@@ -189,14 +192,14 @@ export const JoinClub: React.FC = () => {
                   value={secretCode}
                   onChange={(e) => { setSecretCode(e.target.value); setError(''); }}
                   placeholder="Enter Passcode..."
-                  className="w-full bg-slate-950 border border-slate-700 focus:border-purple-500 rounded-xl px-4 py-3 text-white font-mono text-center outline-none transition-colors uppercase tracking-widest"
+                  className={`w-full bg-slate-950 border border-slate-700 ${modalTarget === 'discord' ? 'focus:border-purple-500' : 'focus:border-indigo-500'} rounded-xl px-4 py-3 text-white font-mono text-center outline-none transition-colors uppercase tracking-widest`}
                   autoFocus
                 />
                 {error && <p className="text-rose-400 text-xs font-bold text-center mt-2 font-mono">{error}</p>}
               </div>
               <button
                 type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded-xl transition-colors shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                className={`w-full ${modalTarget === 'discord' ? 'bg-purple-600 hover:bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.4)]' : 'bg-indigo-600 hover:bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.4)]'} text-white font-bold py-3 rounded-xl transition-colors`}
               >
                 Unlock
               </button>

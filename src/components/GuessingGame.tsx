@@ -39,8 +39,10 @@ export function GuessingGame() {
 
   /* Start on mount */
   useEffect(() => {
-    newGame(100);
-    setReady(true);
+    setTimeout(() => {
+      newGame(100);
+      setReady(true);
+    }, 0);
   }, []);
 
   /* Handle guess */
